@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Review</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  body {
+    margin: 0;
+    background: #333333;
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #000000;
+    margin: auto;
+    width: 100%;
+  }
+
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 1% 5%;
+    text-decoration: none;
+    font-size: 28px;
+    font-family: "Arial", Sans-serif;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .topnav a.active {
+    background-color: #ff3333;
+    color: white;
+  }
+
+  .topnav .icon {
+    display: none;
+  }
+
+  @media screen and (max-width: 900px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+  * {
+    box-sizing: border-box;
+  }
+  .logo img:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+  .logo img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+
+  /* Create four equal columns that sits next to each other */
+  .column {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+  }
+
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .column {
+      -ms-flex: 50%;
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
+
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      -ms-flex: 100%;
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+
+
+
+  .container {
+    position: relative;
+    width: 100%;
+  }
+
+  .image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #ff3333;
+  }
+
+  .container:hover .overlay {
+    opacity: 1;
+  }
+
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+</style>
+<style type="text/css">.site-footer
+{
+  background-color:#26272b;
+  padding:25px 0 5px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color:#737373;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+.footer-links a
+{
+  color:#737373
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block
+}
+.site-footer .social-icons
+{
+  text-align:right
+}
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+.copyright-text
+{
+  margin:0
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:30px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}
+.social-icons
+{
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.social-icons li
+{
+  display:inline-block;
+  margin-bottom:4px
+}
+.social-icons li.title
+{
+  margin-right:15px;
+  text-transform:uppercase;
+  color:#96a2b2;
+  font-weight:700;
+  font-size:13px
+}
+.social-icons a{
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+  color:#fff;
+  background-color:#29aafe
+}
+.social-icons.size-sm a
+{
+  line-height:34px;
+  height:34px;
+  width:34px;
+  font-size:14px
+}
+.social-icons a.facebook:hover
+{
+  background-color:#3b5998
+}
+.social-icons a.twitter:hover
+{
+  background-color:#00aced
+}
+.social-icons a.linkedin:hover
+{
+  background-color:#007bb6
+}
+.social-icons a.dribbble:hover
+{
+  background-color:#ea4c89
+}
+@media (max-width:767px)
+{
+  .social-icons li.title
+  {
+    display:block;
+    margin-right:0;
+    font-weight:600
+  }
+  }</style>
+</head>
+<body>
+  <div style="background-color:black" class="logo">
+    <img src="images/logo.png" height=100px width=100px style="display:block;class ">
+  </div>
+  <div class="topnav" id="myTopnav" >
+    <a href="homepage.html">Home</a>
+    <a href="movies.html">Movies</a>
+    <a href="tvshows.html">TV Shows</a>
+    <a href="toprated.html">Top Rated</a>
+    <a href="genre.html" class="active">Genre</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div style="margin:5%;">
+    <div class="row">
+      <div class="column">
+        <div class="container">
+          <a href="genre/action.html">
+            <img src="images/action.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">ACTION</div>
+            </div>
+          </a>
+        </div>
+        <div class="container">
+          <a href="genre/adventure.html">
+            <img src="images/adventure.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">ADVENTURE</div>
+            </div>
+          </a>
+        </div>
+        <div class="container">
+          <a href="genre/animation.html">
+            <img src="images/Animation.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">ANIMATION</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="column">
+        <div class="container">
+          <a href="genre/comedy.html">
+            <img src="images/Comedy.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">COMEDY</div>
+            </div>
+          </a>
+        </div>
+        <div class="container">
+          <a href="genre/crime.html">
+            <img src="images/Crime.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">CRIME</div>
+            </div>
+          </a>
+        </div>
+        <div class="container">
+          <a href="genre/drama.html">
+            <img src="images/Drama.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">DRAMA</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="column">
+        <div class="container">
+          <a href="genre/history.html">
+            <img src="images/Historical.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">HISTORICAL</div>
+            </div>
+          </a>
+        </div>
+        <div class="container">
+          <a href="genre/music.html">
+            <img src="images/Musical.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">MUSICAL</div>
+            </div>
+          </a>
+        </div>
+        <div class="container">
+          <a href="genre/mystery.html">
+            <img src="images/Mystery.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">MYSTERY</div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <div class="container">
+          <a href="genre/romance.html">
+            <img src="images/Romance.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">ROMANCE</div>
+            </div>
+          </a>
+        </div>
+        <div class="container">
+          <a href="genre/thriller.html">
+            <img src="images/Thriller.jpg" style="width:100%" class="image">
+            <div class="overlay">
+              <div class="text">THRILLER</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify"><i>DailyReview.com,</i>one of the most popular source for movies and TV content. Explore popular TV shows and movies along with their trailer. Rate movies according to your experience, and give feedbacks.<br>*<u>PLEASE NOTE</u>* that this is now a video streaming website. Full-length movies and tv shows are not available here.<br>A site made by Sparsh Arora,Prathmesh Gawande and Sarvesh Kharche.</p>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          <h6>Thank You!</h6>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-1">
+            <p class="copyright-text">Copyright &copy; 2019 All Rights Reserved by
+              <a href="#">DailyReview</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+  </script>
+
+</body>
+</html>
